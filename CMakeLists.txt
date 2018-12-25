@@ -4,13 +4,16 @@ project(luaOpenCV)
 
 
 option(BUILD_TESTS "Builds the unit test" TRUE)
-option(LOCAL_LUA_DIRECTORY "local lua library directory" "third_party/lua-5.3.3")
-set(LOCAL_LUA_DIRECTORY "third_party/lua-5.3.3")
+option(LOCAL_LUA_DIRECTORY "local lua library directory" "third_party/lua-5.35")
+set(LOCAL_LUA_DIRECTORY "third_party/lua-5.3.5")
+set(LUA_INCLUDE_DIRS "third_party/lua-5.3.5/src")
+set(LUA_LIBRARY_DIRS "third_party/lua-5.3.5/lib")  # you lua lib put on here
+set(LUA_LIBRARIES lua5.3.5)
 
-include(cmake/FindLua.cmake)
+#include(cmake/FindLua.cmake)
 
 set(CMAKE_PREFIX_PATH third_party/opencvlib)
-FIND_PACKAGE(OpenCV 3.1.0 REQUIRED)
+FIND_PACKAGE(OpenCV REQUIRED)
 
 include_directories(BEFORE ${LUA_INCLUDE_DIRS})
 link_directories(${LUA_LIBRARY_DIRS})
